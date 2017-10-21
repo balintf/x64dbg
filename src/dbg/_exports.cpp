@@ -662,6 +662,11 @@ extern "C" DLL_EXPORT bool _dbg_getregdump(REGDUMP* regdump)
     lastError.code = ThreadGetLastError(ThreadGetId(hActiveThread));
     strncpy_s(lastError.name, ErrorCodeToName(lastError.code).c_str(), _TRUNCATE);
     regdump->lastError = lastError;
+    LASTSTATUS lastStatus;
+    memset(&lastStatus.name, 0, sizeof(lastStatus.name));
+    lastStatus.code = ThreadGetLastStatus(ThreadGetId(hActiveThread));
+    strncpy_s(lastStatus.name, NtStatusCodeToName(lastStatus.code).c_str(), _TRUNCATE);
+    regdump->lastStatus = lastStatus;
 
     return true;
 }

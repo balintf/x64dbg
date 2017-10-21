@@ -757,6 +757,12 @@ typedef struct
 
 typedef struct
 {
+    NTSTATUS code;
+    char name[128];
+} LASTSTATUS;
+
+typedef struct
+{
     REGISTERCONTEXT regcontext;
     FLAGS flags;
     X87FPUREGISTER x87FPURegisters[8];
@@ -765,6 +771,7 @@ typedef struct
     X87STATUSWORDFIELDS x87StatusWordFields;
     X87CONTROLWORDFIELDS x87ControlWordFields;
     LASTERROR lastError;
+    LASTSTATUS lastStatus;
 } REGDUMP;
 
 typedef struct
@@ -810,6 +817,7 @@ typedef struct
     THREADPRIORITY Priority;
     THREADWAITREASON WaitReason;
     DWORD LastError;
+    NTSTATUS LastStatus;
     FILETIME UserTime;
     FILETIME KernelTime;
     FILETIME CreationTime;
