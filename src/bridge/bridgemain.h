@@ -757,7 +757,7 @@ typedef struct
 
 typedef struct
 {
-    NTSTATUS code;
+    DWORD code;
     char name[128];
 } LASTSTATUS;
 
