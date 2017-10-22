@@ -817,7 +817,6 @@ typedef struct
     THREADPRIORITY Priority;
     THREADWAITREASON WaitReason;
     DWORD LastError;
-    NTSTATUS LastStatus;
     FILETIME UserTime;
     FILETIME KernelTime;
     FILETIME CreationTime;
